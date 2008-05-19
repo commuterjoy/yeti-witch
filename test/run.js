@@ -21,7 +21,10 @@ load("./test/runner.js");
 var dir = new File("./test/tests");
 var tests = dir.listFiles();
 for (var i in tests){
-	load(tests[i].getPath());
+	var filePath = tests[i].getPath();
+	if ( /\.js$/.test(filePath)){ // filter anything but .js file
+		load(filePath);
+		}
 	}
 
 // assign the loaded tests to the testCases 
@@ -29,6 +32,8 @@ var testCases = [
 	t_anagrams,
 	t_caverphone,
 	t_levenshtein,
+	t_metaphone,
+	t_porterStemmer,
 	t_soundex,
 	];
 

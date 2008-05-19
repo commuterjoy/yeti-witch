@@ -12,9 +12,8 @@ var t_anagrams = function(){
 	is( true, "foo".isAnagram('oFO'), "Mixed casing");
 	is( true, ".,foo123".isAnagram('3.o1,2of'), "Non-alphabetic characters");
 	is( true, "Fawlty Towers".isAnagram('Flowery Twats'), "Whitespace");
-	is( true, "foo".isAnagram('oFO'), "Mixed casing");
 	is( true, "yeti witch, burst racoon, fleshstudio".isAnagram('White City, Barons Court, Southfields'), "Long string");
-	is( true, new String(931413501).isAnagram('931413501'), "Anagramatic numbers (ie. automatically casting int to string)");
+	is( true, new String(931413501).isAnagram('931413501'), "Anagramatic numbers"); // ie. automatically casting int to string
 
 			
 	// failures	

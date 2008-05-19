@@ -1,4 +1,7 @@
 
  * Find data to verify Soundex Refined
- * Port the Double Metaphone algorithm from Apache : http://svn.apache.org/viewvc/commons/proper/codec/trunk/src/java/org/apache/commons/codec/language/DoubleMetaphone.java?view=markup
- * The Porter Stemmer is too verbose, the Perl one looks more efficient - http://tartarus.org/~martin/PorterStemmer/perl.txt
+ * Port the Double Metaphone algorithm from Apache
+ 	- ./trunk/src/java/org/apache/commons/codec/language/DoubleMetaphone.java
+ * The Porter Stemmer is too verbose, the Perl one looks more efficient
+    - http://tartarus.org/~martin/PorterStemmer/perl.txt
+ * Nothing is hugely tuned for performance yet

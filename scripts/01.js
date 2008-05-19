@@ -16,11 +16,10 @@ load("lib/soundex.js");
 load("lib/soundex-refined.js");
 
 importPackage(java.io);
- 
 /**
- * 
- * @param {Object} test
+ * java -jar js.jar ./examples/soundex-location.js london
  */
+
 function main( test ){
 	
 	var dictionary = new BufferedReader(new FileReader("dictionary/location"));
