@@ -12,9 +12,9 @@ var t_soundex = function(){
 	is( true, london == ".,lon123don".soundex(), "Non-alphabetic characters");
 	is( true, london == "l on do n".soundex(), "Whitespace");
 
-	// less than 4 characters
-	is( true, "L000" == "l".soundex(), "Single character"); // doesn't work for string < 4 characters
-	is( true, "L530" == "lond".soundex(), "Single character"); // doesn't work for string < 4 characters
+	// less than 4 characters should be zero-suffixed
+	is( true, "L000" == "l".soundex(), "Single character");
+	is( true, "L530" == "lond".soundex(), "Single character"); 
 			
 	// various misspellings of the word London should all resolve to the same soundex key
 	is( true, london == "londn".soundex(), "London i");
