@@ -14,7 +14,7 @@ var t_soundex = function(){
 
 	// less than 4 characters should be zero-suffixed
 	is( true, "L000" == "l".soundex(), "Single character");
-	is( true, "L530" == "lond".soundex(), "Single character"); 
+	is( true, "L530" == "lond".soundex(), "4 characters"); 
 			
 	// various misspellings of the word London should all resolve to the same soundex key
 	is( true, london == "londn".soundex(), "London i");
@@ -22,11 +22,11 @@ var t_soundex = function(){
 	is( true, london == "lnodon".soundex(), "London iii");
 	is( true, london == "londan".soundex(), "London iv");
 	is( true, london == "lnodno".soundex(), "London v");
-
+	
 	// likewise, various mispellings that don't generate a correct key
 	is( false, london == "kondon".soundex(), "London vi");
 	is( false, london == "lpmdon".soundex(), "London vii");
 	is( false, london == "lonzom".soundex(), "London viii");
-	
+		
 }
-t_soundex.suiteName = 'SoundEx';
+t_soundex.suiteName = 'Soundex';

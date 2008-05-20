@@ -20,7 +20,7 @@ importPackage(java.io);
  * java -jar js.jar ./examples/soundex-location.js london
  */
 
-function main( test ){
+function main( args ){
 	
 	var dictionary = new BufferedReader(new FileReader("dictionary/location.long"));
 	

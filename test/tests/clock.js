@@ -11,7 +11,7 @@ var t_clock = function(){
 	var comparsionString = 'witch'; 
 	
 	// prototype method names
-	var algorithms = ['isAnagram','caverphone','levenshtein','metaphone','porterStemmer','soundex'];
+	var algorithms = ['isAnagram','caverphone','levenshtein','metaphone','porterStemmer','soundex', 'soundexRefined'];
 
 	// populate a dictionary of terms
 	var d = []; 	var n = 0;

@@ -14,6 +14,7 @@ load("./lib/levenshtein.js");
 load("./lib/metaphone.js");
 load("./lib/porter-stemmer.js");
 load("./lib/soundex.js");
+load("./lib/soundex-refined.js");
 
 // load test runner
 load("./test/runner.js");
@@ -28,14 +29,15 @@ for (var i in tests){
 		}
 	}
 
-// assign the loaded tests to the testCases 
+// assign the loaded tests to the testCases
 var testCases = [
 	t_anagrams,
 	t_caverphone,
 	t_levenshtein,
 	t_metaphone,
 	t_porterStemmer,
-	t_soundex
+	t_soundex,
+	t_soundexRefined
 	];
 
 // optionally turn off the benchmarking with a flag
