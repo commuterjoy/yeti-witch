@@ -22,7 +22,7 @@ importPackage(java.io);
 
 function main( test ){
 	
-	var dictionary = new BufferedReader(new FileReader("dictionary/location"));
+	var dictionary = new BufferedReader(new FileReader("dictionary/location.long"));
 	
 	// 
 	var lookup_s = [];
@@ -30,9 +30,9 @@ function main( test ){
 	var lookup_c = [];
 	var line;
 	
-	var input = "london";
+	var input = new String(arguments[0]);
 	
-	var metaphoneKeyLength = 7;
+	var metaphoneKeyLength = 5;
 	
 	//
 	var input_s = input.soundex();

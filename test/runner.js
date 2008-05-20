@@ -1,8 +1,9 @@
 /**
+ * Yet Another JavaScript Unit Test Runner
  * 18 May 2008
  *
  * The code has been adapted from the the jsdoc-toolkit project and is being redistributed 
- * under the terms of that license.
+ * with modifcations under the terms of that license.
  *  - http://code.google.com/p/jsdoc-toolkit/
  *  - http://en.wikipedia.org/wiki/MIT_License
  *   
@@ -30,10 +31,10 @@ testrun.passes = 0;
 testrun.fails = 0;
 testrun.reportOut = "";
 
-/** @private */
-testrun.report = function(text) {
-        testrun.reportOut += text+"\n";
-}
+	/** @private */
+	testrun.report = function(text) {
+	        testrun.reportOut += text+"\n";
+	}
 
 	/**
 	        Check if test evaluates to true.
@@ -70,62 +71,87 @@ testrun.report = function(text) {
         @param {string} expected
         @param {string} message Optional. To be displayed in the report. 
         @return {boolean} True if (test == expected). Note that the comparison is not a strict equality check.
-*/
-is = function(test, expected, message) {
-        testrun.count++;
-        
-        var result;
-        try {
-                result = eval(test);
-                
-                if (result == expected) {
-                        testrun.passes++
-                        testrun.report("    OK "+testrun.count+" - "+((message != null)? message : ""));
-                }
-                else {
-                        testrun.fails++
-                        testrun.report("NOT OK "+testrun.count+" - "+((message != null)? message : ""));
-                        testrun.report("expected: "+expected);
-                        testrun.report("     got: "+result);
-                }
-        }
-        catch(e) {
-                testrun.fails++
-                testrun.report("NOT OK "+testrun.count+" - "+((message != null)? message : ""));
-                testrun.report("expected: "+expected);
-                testrun.report("     got: "+result);}
-}
+		*/
+		is = function(test, expected, message) {
+		        testrun.count++;
+		        
+		        var result;
+		        try {
+		                result = eval(test);
+		                
+		                if (result == expected) {
+		                        testrun.passes++
+		                        testrun.report("    OK "+testrun.count+" - "+((message != null)? message : ""));
+		                }
+		                else {
+		                        testrun.fails++
+		                        testrun.report("NOT OK "+testrun.count+" - "+((message != null)? message : ""));
+		                        testrun.report("expected: "+expected);
+		                        testrun.report("     got: "+result);
+		                }
+		        }
+		        catch(e) {
+		                testrun.fails++
+		                testrun.report("NOT OK "+testrun.count+" - "+((message != null)? message : ""));
+		                testrun.report("expected: "+expected);
+		                testrun.report("     got: "+result);}
+		}
 
 
-/**
-        Check if test matches pattern.
-        @param {string} test To be evaluated.
-        @param {string} pattern Used to create a RegExp.
-        @param {string} message Optional. To be displayed in the report.
-        @return {boolean} True if test matches pattern.
-*/
-like = function(test, pattern, message) {
-        testrun.count++;
+		/**
+		        Check if test matches pattern.
+		        @param {string} test To be evaluated.
+		        @param {string} pattern Used to create a RegExp.
+		        @param {string} message Optional. To be displayed in the report.
+		        @return {boolean} True if test matches pattern.
+		*/
+		like = function(test, pattern, message) {
+		        testrun.count++;
+		
+		
+		        var result;
+		        try {
+		                result = eval(test);
+		                var rgx = new RegExp(pattern);
+		                
+		                if (rgx.test(result)) {
+		                        testrun.passes++
+		                        testrun.report("    OK "+testrun.count+" - "+((message != null)? message : ""));
+		                }
+		                else {
+		                        testrun.fails++
+		                        testrun.report("NOT OK "+testrun.count+" - "+((message != null)? message : ""));
+		                        testrun.report("       this: "+result);
+		                        testrun.report("is not like: "+pattern);
+		                }
+		        }
+		        catch(e) {
+		                testrun.fails++
+		                testrun.report("NOT OK "+testrun.count+" - "+((message != null)? message : ""));
+		        }
+		}
 
+	/**
+	        Time the execution of a given function
+	        @param {function} f To be evaluated.
+	        @param {string} message Optional. To be displayed in the report.
+	*/
 
-        var result;
-        try {
-                result = eval(test);
-                var rgx = new RegExp(pattern);
-                
-                if (rgx.test(result)) {
-                        testrun.passes++
-                        testrun.report("    OK "+testrun.count+" - "+((message != null)? message : ""));
-                }
-                else {
-                        testrun.fails++
-                        testrun.report("NOT OK "+testrun.count+" - "+((message != null)? message : ""));
-                        testrun.report("       this: "+result);
-                        testrun.report("is not like: "+pattern);
-                }
-        }
-        catch(e) {
-                testrun.fails++
-                testrun.report("NOT OK "+testrun.count+" - "+((message != null)? message : ""));
-        }
-}
+	clock = function(f, message){
+	    	testrun.count++;
+		var result;
+	
+		try {
+			var s = new Date();
+			result = eval(f());
+			var e = new Date();
+			var time = (e-s)/1000;
+			testrun.report("    OK "+testrun.count+" - "+time+"s "+((message != null)? message : ""));		
+		}	
+		catch(e){
+			testrun.fails++;		
+			testrun.report("NOT OK "+testrun.count+" - "+((message != null)? message : ""));
+			testrun.report("       this: "+result);
+		}
+	}
+

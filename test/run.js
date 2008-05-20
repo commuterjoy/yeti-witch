@@ -1,5 +1,6 @@
 /**
- * java -jar js.jar test/run.js
+ * java -jar js.jar test/run.js // execute the unit tests
+ * java -jar js.jar test/run.js -noclock  // don't run the benchmark tests
  * 
  * @author chadbm01
  */
@@ -34,9 +35,15 @@ var testCases = [
 	t_levenshtein,
 	t_metaphone,
 	t_porterStemmer,
-	t_soundex,
+	t_soundex
 	];
+
+// optionally turn off the benchmarking with a flag
+if ( arguments[0] != '-noclock' ){
+	testCases.push(t_clock);
+}
 
 // run
 print(testrun(testCases));
+
 
