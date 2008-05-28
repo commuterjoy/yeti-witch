@@ -11,7 +11,8 @@
 load("lib/metaphone.js");
 
 function main( arg ){
-	return new String(arg[0]).metaphone();
+	var m = arg[1] || 4;
+	return new String(arg[0]).metaphone(m);
 }
 
 // invoke

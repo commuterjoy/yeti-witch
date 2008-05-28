@@ -11,7 +11,8 @@
 load("lib/soundex-refined.js");
 
 function main( arg ){
-	return new String(arg[0]).soundexRefined();
+	var m = arg[1] || 4;
+	return new String(arg[0]).soundexRefined(m);
 }
 
 // invoke
