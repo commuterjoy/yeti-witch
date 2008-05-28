@@ -1,10 +1,12 @@
 /**
  * 
- * Stems a given string according to Mr Porters algorithm.
+ * Stems a given string according to Mr Porter's algorithm.
  * 
  * Eg.
- *  java -jar js.jar examples/porter/stem.js 'witches'
- *
+ *  // these two words have the same stem
+ *  java -jar js.jar examples/porter/stem.js 'probably'
+ *  java -jar js.jar examples/porter/stem.js 'probabilities'
+ *  
  * @author Matt Chadburn <matt@commuterjoy.co.uk>
  */
 

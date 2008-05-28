@@ -2,7 +2,7 @@
  * java -jar js.jar test/run.js // execute the unit tests
  * java -jar js.jar test/run.js -noclock  // don't run the benchmark tests
  * 
- * @author chadbm01
+ * @author Matt Chadburn <matt@commuterjoy.co.uk>
  */
 
 importPackage(java.io);
@@ -24,7 +24,7 @@ var dir = new File("./test/tests");
 var tests = dir.listFiles();
 for (var i in tests){
 	var filePath = tests[i].getPath();
-	if ( /\.js$/.test(filePath)){ // filter anything but .js file
+	if ( /\.js$/.test(filePath)){ // filter anything but .js files
 		load(filePath);
 		}
 	}

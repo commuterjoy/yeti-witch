@@ -1,21 +1,20 @@
 /**
  * 
- * Generates 
+ * For each word in a given file this will produce an xml sequence containing the
+ * various Yeti-Witch algorithms.
  * 
  * This is quite slow for long lists at the moment.
  * 
  * Eg. 
- *  java -jar js.jar examples/lookup/json.js dictionary/names.girls
+ *  java -jar js.jar examples/lookup/xml.js dictionary/names.girls
  * 
- * @author chadbm01
+ * @author Matt Chadburn <matt@commuterjoy.co.uk>
  */
 
 importPackage(java.io);
 
 // libraries
-load("lib/anagram.js");
 load("lib/caverphone.js");
-load("lib/levenshtein.js");
 load("lib/metaphone.js");
 load("lib/porter-stemmer.js");
 load("lib/soundex.js");
@@ -56,7 +55,7 @@ function main( args ){
 
 // entry point
 var xml = _serializeToXML( main( arguments ) );
-print(xml);
+print(xml.toXMLString());
 
 /**
  * Serializes, although not especially carefully, an array-of-objects to an XML string
@@ -67,12 +66,12 @@ print(xml);
 function _serializeToXML( keys ){
 	var xml = <lookup />;
 	keys.forEach(function(item){
-			var s = <word/>;
+			var word = <word/>;
 			for(var i in item){
-				 var node = <{i}>{item[i]}</{i}>;  // weird e4x templating  - ref: http://developer.mozilla.org/en/docs/E4X_tutorial#Javascript_Variables;
-				 s.appendChild(node); 
-			}
-			xml.appendChild(s);
+				 var node = <{i}>{item[i]}</{i}>;  // weird e4x templating - ref: http://developer.mozilla.org/en/docs/E4X_tutorial#Javascript_Variables;
+				 word.appendChild(node); 
+				 }
+			xml.appendChild(word);
 		});
 	return xml;
 }
